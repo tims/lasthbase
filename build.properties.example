@@ -1,6 +1,6 @@
 ### IVY PROPERTIES ###
 #the current version of your application (used when publishing)
-version=0.2
+version=0.3
 ##the path to where ivy settings and common target files are located
 ##(only set this if you install custom ivysvn instead of using debian package or .tgz) 
 #ivysettings.dir=/home/USER/workspace/ivysvnresolver-trunk
