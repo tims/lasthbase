@@ -30,11 +30,8 @@ def mapper(key, columns):
 def runner(job):
     job.additer(mapper)
 
-def starter(prog):
-    pass
-
 if __name__ == "__main__":
-    dumbo.main(runner,starter)
+    dumbo.main(runner)
 
 eg. using the output format.
 
@@ -52,11 +49,8 @@ def mapper(key, column):
 def runner(job):
     job.additer(mapper)
 
-def starter(prog):
-    pass
-
 if __name__ == "__main__":
-    dumbo.main(runner,starter)
+    dumbo.main(runner)
 
 4. Starting your dumbo job over hbase:
 
