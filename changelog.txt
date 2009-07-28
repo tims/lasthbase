@@ -1,0 +1,13 @@
+#Add changelog entries here as required
+
+~~~~~~~~~~~~~~~~
+Release 0.2 (2009-07-09 14:43:48)
+~~~~~~~~~~~~~~~~
+- Renamed fm.last.bobbie to fm.last.hbase 
+ 
+~~~~~~~~~~~~~~~~
+Release 0.1 (2009-07-09 14:31:56)
+~~~~~~~~~~~~~~~~
+- TypedBytesTableInputFormat
+- TypedBytesTableOutputFormat
+

@@ -1,0 +1,21 @@
+### IVY PROPERTIES ###
+#the current version of your application (used when publishing)
+#version=0.1
+##the path to where ivy settings and common target files are located
+##(only set this if you install custom ivysvn instead of using debian package or .tgz) 
+#ivysettings.dir=/home/USER/workspace/ivysvnresolver-trunk
+#user name for connecting to svn
+#only set this if default value in common.xml not correct for your setup
+#svn.user.name=
+#password for subversion
+#svn.user.password=
+#or path to private keyfile
+##only set this if default value in common.xml not correct for your setup
+#ssh.keyfile=
+
+#findbugs home dir
+#findbugs.home.dir/opt/java/findbugs/
+
+### JUNIT PROPERTIES ###
+#only set this property if you want to limit what unit tests are run from ant
+#junit.includes=**/*ExampleTest.java

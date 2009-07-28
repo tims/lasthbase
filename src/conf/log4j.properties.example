@@ -1,0 +1,17 @@
+log4j.rootLogger=DEBUG, console, file
+
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.Threshold=DEBUG
+
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{HH:mm} %-3p [%.13t] %.25c{2}: %m%n
+
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.DatePattern='.'yyyy-MM-dd
+log4j.appender.file.File=/var/log/project-skeleton/log.log
+log4j.appender.file.Threshold=DEBUG
+log4j.appender.file.Append=true
+
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{MM-dd HH:mm:ss} %-5p [%.10t] %.30c{2} - %m%n
+

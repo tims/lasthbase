@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="build" name="lasthbase">
+		
+	<!-- override properties in common.xml BEFORE importing it -->
+	
+	<import file="common.xml"/>
+	
+	<!-- override targets in common.xml AFTER importing it -->
+	
+</project>

@@ -1,0 +1,18 @@
+<ivy-module version="1.0">
+  <info organisation="lastfm" module="lasthbase"/>
+  
+  <publications>
+    <artifact name="lasthbase" ext="jar"/>
+  </publications>
+  
+  <dependencies>
+    <dependency org="apache" name="log4j" rev="1.2.13"/>
+    <dependency org="junit.org" name="junit" rev="4.5"/>
+    <!-- 
+    <dependency org="sf.net" name="checkstyle" rev="4.4"/>
+    <dependency org="sf.net" name="cobertura" rev="1.9"/>
+     -->
+    <dependency org="apache" name="hbase" rev="0.20.0dev3" />
+    <dependency org="apache" name="hadoop" rev="0.20.1+lastfm1" />
+  </dependencies>
+</ivy-module>
