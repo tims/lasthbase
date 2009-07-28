@@ -1,6 +1,8 @@
 == lasthbase ==
 
 A java library last.fm uses with hbase. Currently just table input and output formats for using dumbo with hbase.
+ - HBase: http://wiki.apache.org/hadoop/Hbase
+ - Dumbo: http://klbostee.github.com/dumbo/
 
 === Using dumbo over HBase ===
 
