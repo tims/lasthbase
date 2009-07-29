@@ -1,19 +1,26 @@
 == lasthbase ==
 
-A java library last.fm uses with hbase. Currently just table input and output formats for using dumbo with hbase.
+A java library last.fm uses with hbase. Currently just table input and output
+formats for using dumbo with hbase.
  - HBase: http://wiki.apache.org/hadoop/Hbase
  - Dumbo: http://klbostee.github.com/dumbo/
 
 === Using dumbo over HBase ===
 
-These assume you are storing everything in hbase as if they are strings. A nice addition would be to actually store the typedbytes in hbase directly. You should also note, the tables and families you are writing and reading to must already exist in hbase.
+These assume you are storing everything in hbase as if they are strings. A nice
+addition would be to actually store the typedbytes in hbase directly. You should 
+also note, the tables and families you are writing and reading to must 
+already exist in hbase.
 
 The input format, will give key values to your mapper as:
 (row, {family: {qualifier1: value, qualifier2 : value2}, family2: {qualifier3: value3} })
-The output format takes the same format. The row, families, qualifiers, and values must all be strings (for now). 
+
+The output format takes the same format. The row, families, qualifiers, and 
+values must all be strings (for now). 
 
 To use:
-1. you obviously must already have hadoop and hbase setup so you can run java mapreduce jobs over hbase first (have hbase jar in hadoop lib folder, etc).
+1. you obviously must already have hadoop and hbase setup so you can run java 
+   mapreduce jobs over hbase first (have hbase jar in hadoop lib folder, etc).
 2. build the lasthbase.jar, with ant.
 3. write your dumbo job
 
