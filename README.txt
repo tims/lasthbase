@@ -21,7 +21,7 @@ values must all be strings (for now).
 To use:
 1. you obviously must already have hadoop and hbase setup so you can run java 
    mapreduce jobs over hbase first (have hbase jar in hadoop lib folder, etc).
-2. build the lasthbase.jar, with ant.
+2. build the lasthbase.jar, with ant. This project is not using a release version of hbase yet, replace the jars with the hbase.jar you're using before compiling.
 3. write your dumbo job
 
 eg. using the input format 
