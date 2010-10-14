@@ -7,10 +7,9 @@ formats for using dumbo with hbase.
 
 === Using dumbo over HBase ===
 
-These assume you are storing everything in hbase as if they are strings. A nice
-addition would be to actually store the typedbytes in hbase directly. You should 
-also note, the tables and families you are writing and reading to must 
-already exist in hbase.
+These assume you are storing everything in hbase as if they are byte strings.
+You should also note, the tables and families you are writing and reading to
+must already exist in hbase.
 
 The input format, will give key values to your mapper as:
 (row, {family: {qualifier1: value, qualifier2 : value2}, family2: {qualifier3: value3} })

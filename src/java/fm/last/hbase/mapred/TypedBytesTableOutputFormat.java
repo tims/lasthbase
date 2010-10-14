@@ -24,13 +24,13 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Put;
-import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.mapred.FileAlreadyExistsException;
+import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.InvalidJobConfException;
 import org.apache.hadoop.mapred.JobConf;
-import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.RecordWriter;
 import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.record.Buffer;
 import org.apache.hadoop.typedbytes.TypedBytesWritable;
 import org.apache.hadoop.util.Progressable;
 
@@ -72,34 +72,42 @@ public class TypedBytesTableOutputFormat extends FileOutputFormat<TypedBytesWrit
         return;
       }
       try {
-        put = new Put(Bytes.toBytes((String) key.getValue()));
+        put = new Put(key.getBytes());
       } catch (Exception e) {
-        throw new IOException("expecting key of type String", e);
+        throw new IOException("expecting key of type byte[]", e);
       }
 
       try {
         Map columns = (Map) value.getValue();
         for (Object famObj : columns.keySet()) {
-          String family = (String) famObj;
+          byte[] family = getBytesFromBuffer((Buffer) famObj);
           Object qualifierCellValueObj = columns.get(family);
           if (qualifierCellValueObj == null) {
             continue;
           }
           Map qualifierCellValue = (Map) qualifierCellValueObj;
           for (Object qualifierObj : qualifierCellValue.keySet()) {
-            String qualifier = (String) qualifierObj;
+        	byte[] qualifier = getBytesFromBuffer((Buffer) qualifierObj);
             Object cellValueObj = qualifierCellValue.get(qualifier);
             if (cellValueObj == null) {
               continue;
             }
-            String cellValue = (String) cellValueObj;
-            put.add(Bytes.toBytes(family), Bytes.toBytes(qualifier), Bytes.toBytes(cellValue));
+            byte[] cellValue = getBytesFromBuffer((Buffer) cellValueObj);
+            put.add(family, qualifier, cellValue);
           }
         }
       } catch (Exception e) {
-        throw new IOException("couldn't get column values, expecting Map<String, Map<String, String>>", e);
+        throw new IOException("couldn't get column values, expecting Map<Buffer, Map<Buffer, Buffer>>", e);
       }
       m_table.put(put);
+    }
+
+
+    private byte[] getBytesFromBuffer(final Buffer buffer){
+	    final int count = buffer.getCount();
+	    byte[] bytes = new byte[count];
+	    System.arraycopy(buffer.get(), 0, bytes, 0, count);
+	    return bytes;
     }
   }
 

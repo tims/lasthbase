@@ -46,6 +46,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.JobConfigurable;
 import org.apache.hadoop.mapred.RecordReader;
 import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.record.Buffer;
 import org.apache.hadoop.typedbytes.TypedBytesWritable;
 import org.apache.hadoop.util.StringUtils;
 
@@ -199,7 +200,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
       if (result != null && result.size() > 0) {
         // family->qualifier->value
-        Map<String, Map<String, String>> columns = new HashMap<String, Map<String, String>>();
+        Map<Buffer, Map<Buffer, Buffer>> columns = new HashMap<Buffer, Map<Buffer, Buffer>>();
 
         for (KeyValue kv : result.list()) {
           byte[] family = kv.getFamily();
@@ -209,16 +210,16 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
             continue;
           }
 
-          String familyStr = Bytes.toString(family);
-          Map<String, String> column = columns.get(familyStr);
+          Buffer family_bfr = new Buffer(family);
+          Map<Buffer, Buffer> column = columns.get(family_bfr);
           if (column == null) {
-            column = new HashMap<String, String>();
+            column = new HashMap<Buffer, Buffer>();
           }
-          column.put(Bytes.toString(qualifier), Bytes.toString(columnValue));
-          columns.put(familyStr, column);
+          column.put(new Buffer(qualifier), new Buffer(columnValue));
+          columns.put(family_bfr, column);
         }
 
-        key.setValue(Bytes.toString(result.getRow()));
+        key.setValue(new Buffer(result.getRow()));
         lastRow = result.getRow();
         value.setValue(columns);
         return true;

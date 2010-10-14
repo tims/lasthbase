@@ -1,6 +1,11 @@
 #Add changelog entries here as required
 
 ~~~~~~~~~~~~~~~~
+Unreleased
+~~~~~~~~~~~~~~~~
+ - Changed from strings to byte strings
+
+~~~~~~~~~~~~~~~~
 Release 0.3 (2009-07-09 16:20:00)
 ~~~~~~~~~~~~~~~~
 - Public release 
