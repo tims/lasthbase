@@ -14,16 +14,16 @@ must already exist in hbase.
 The input format, will give key values to your mapper as:
 (row, {family: {qualifier1: value, qualifier2 : value2}, family2: {qualifier3: value3} })
 
-The output format takes the same format. The row, families, qualifiers, and 
-values must all be strings (for now). 
+The output format takes the same format. The row, families, qualifiers, and
+values must all be strings (for now).
 
 To use:
-1. you obviously must already have hadoop and hbase setup so you can run java 
+1. you obviously must already have hadoop and hbase setup so you can run java
    mapreduce jobs over hbase first (have hbase jar in hadoop lib folder, etc).
 2. build the lasthbase.jar, with ant. This project is not using a release version of hbase yet, replace the jars with the hbase.jar you're using before compiling.
 3. write your dumbo job
 
-eg. using the input format 
+eg. using the input format
 
 # test_in.py
 import dumbo
@@ -65,7 +65,7 @@ $ dumbo test_in.py -hadoop <hadoopdir> -libjar lasthbase.jar \
 -hadoopconf hbase.mapred.tablecolumns="family1:qualifier1 family1:qualifier2 family2:qualifier3" \
 -input input_table -output output_dir
 
-$ dumbo test_out.py -hadoop <hadoopdir> -libjar lasthbase.jar \ 
+$ dumbo test_out.py -hadoop <hadoopdir> -libjar lasthbase.jar \
 -outputformat fm.last.hbase.mapred.TypedBytesTableOutputFormat \
 -input test_data \
 -jobconf hbase.mapred.outputtable=output_table \
