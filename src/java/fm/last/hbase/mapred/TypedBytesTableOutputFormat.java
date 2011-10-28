@@ -53,7 +53,7 @@ public class TypedBytesTableOutputFormat extends FileOutputFormat<TypedBytesWrit
 
     /**
      * Instantiate a TableRecordWriter with the HBase HClient for writing.
-     * 
+     *
      * @param table
      */
     public TableRecordWriter(HTable table) {

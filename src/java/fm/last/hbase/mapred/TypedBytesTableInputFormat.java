@@ -77,7 +77,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
     /**
      * Restart from survivable exceptions by creating a new scanner.
-     * 
+     *
      * @param firstRow
      * @throws IOException
      */
@@ -105,7 +105,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
     /**
      * Build the scanner. Not done in constructor to allow for extension.
-     * 
+     *
      * @throws IOException
      */
     public void init() throws IOException {
@@ -271,7 +271,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
   /**
    * Builds a TableRecordReader. If no TableRecordReader was provided, uses the default.
-   * 
+   *
    * @see org.apache.hadoop.mapred.InputFormat#getRecordReader(InputSplit, JobConf, Reporter)
    */
   public RecordReader<TypedBytesWritable, TypedBytesWritable> getRecordReader(InputSplit split, JobConf job,
@@ -298,7 +298,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
    * table. If the number of splits is smaller than the number of {@link HRegion}s then splits are spanned across
    * multiple {@link HRegion}s and are grouped the most evenly possible. In the case splits are uneven the bigger splits
    * are placed first in the {@link InputSplit} array.
-   * 
+   *
    * @param job the map task {@link JobConf}
    * @param numSplits a hint to calculate the number of splits (mapred.map.tasks).
    * @return the input splits
@@ -351,7 +351,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
   /**
    * Allows subclasses to set the {@link HTable}.
-   * 
+   *
    * @param table to get the data from
    */
   protected void setHTable(HTable table) {
@@ -360,7 +360,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
   /**
    * Allows subclasses to set the {@link TableRecordReader}.
-   * 
+   *
    * @param tableRecordReader to provide other {@link TableRecordReader} implementations.
    */
   protected void setTableRecordReader(TableRecordReader tableRecordReader) {
@@ -369,7 +369,7 @@ public class TypedBytesTableInputFormat implements InputFormat<TypedBytesWritabl
 
   /**
    * Allows subclasses to set the {@link RowFilterInterface} to be used.
-   * 
+   *
    * @param rowFilter
    */
   protected void setRowFilter(RowFilterInterface rowFilter) {
